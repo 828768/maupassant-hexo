@@ -1,20 +1,33 @@
 if theme.fancybox == true
-  script(type='text/javascript', src='//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js', async)
+  script(type='text/javascript', src='//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js', async)
   script(type='text/javascript', src=url_for(theme.js) + '/fancybox.js' + '?v=' + theme.version, async)
-  link(rel='stylesheet', type='text/css', href='//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css')
+  link(rel='stylesheet', type='text/css', href='//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css')
 
-if theme.duoshuo
+if theme.tinysou
   script.
-    var duoshuoQuery = {short_name:'#{theme.duoshuo}'};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    
+    var option = {
+      engineKey: '#{theme.tinysou}'
+    };
+    (function(w,d,t,u,n,s,e){
+      s = d.createElement(t);
+      s.src = u;
+      s.async = 1;
+      w[n] = function(r){
+        w[n].opts = r;
+      };
+      e = d.getElementsByTagName(t)[0];
+      e.parentNode.insertBefore(s, e);
+    })(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+    _ts(option);
+
+if theme.swiftype
+  script.
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    _st('install','#{theme.swiftype}','2.0.0');
+
 if theme.self_search == true
   script(type='text/javascript', src=url_for(theme.js) + '/search.js' + '?v=' + theme.version)
   script.
@@ -34,6 +47,13 @@ if theme.baidu_analytics
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
       })();
+
+if theme.canvas_nest.enable == true
+    - var color=theme.canvas_nest.color || "0,0,0"
+    - var opacity=theme.canvas_nest.opacity || "0.5"
+    - var zIndex=theme.canvas_nest.zIndex || "-2"
+    - var count=theme.canvas_nest.count || "50"
+    script(type='text/javascript', color='#{color}', opacity='#{opacity}', zIndex='#{zIndex}', count='#{count}',src='//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js')
 
 if page.mathjax
   include mathjax
