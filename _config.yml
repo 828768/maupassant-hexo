@@ -9,12 +9,23 @@ gitment:
 uyan: ## Your uyan_id. e.g. 1234567
 livere: ## Your livere data-uid, e.g. MTAyMC8zMDAxOC78NTgz
 changyan: ## Your changyan appid, e.g. cyrALsXc8
-changyan_conf: ## You changyan conf, e.g. prod_d8a508c2825ab57eeb43e7c69bba0e8b
+changyan_conf: ## Your changyan conf, e.g. prod_d8a508c2825ab57eeb43e7c69bba0e8b
+valine: ## https://valine.js.org
+  enable: false ## If you want to use Valine comment system, please set the value to true.
+  appid: ## Your LeanCloud application App ID, e.g. pRBBL2JR4N7kLEGojrF0MsSs-gzGzoHsz
+  appkey: ## Your LeanCloud application App Key, e.g. tjczHpDfhjYDSYddzymYK1JJ
+  notify: false ## Mail notifier, see https://github.com/xCss/Valine/wiki/Valine-评论系统中的邮件提醒设置
+  verify: false ## Validation code.
+  placeholder: Just so so ## Comment box placeholders.
+  avatar: 'mm' ## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
+  pageSize: 10 ## Number of comments per page.
+  guest_info: nick,mail,link ## Attributes of reviewers.
+
 google_search: true ## Use Google search, true/false.
-baidu_search: ## Use Baidu search, true/false.
-google_analytics: #UA-22119753-2 ## Your Google Analytics tracking id, e.g. UA-42425684-2
-baidu_analytics:  4025807967cba2613eedb9db9aadb938 ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
-self_search: ## Use a jQuery-based local search engine, true/false.
+baidu_search: false ## Use Baidu search, true/false.
+self_search: false ## Use a jQuery-based local search engine, true/false.
+google_analytics: ## Your Google Analytics tracking id, e.g. UA-42425684-2
+baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
 show_category_count: true ## If you want to show the count of categories in the sidebar widget please set the value to true.
 toc_number: true ## If you want to add list number to toc please set the value to true.
 shareto: false ## If you want to use the share button please set the value to true, you must have hexo-helper-qrcode installed.
@@ -32,7 +43,7 @@ donate:
   alipay_qr: ## Path of Alipay QRcode image, e.g. /img/AliPayQR.png
   wechat_qr: ## Path of Wechat QRcode image, e.g. /img/WeChatQR.png
   btc_qr: ## Path of Bitcoin QRcode image, e.g. /img/BTCQR.png
-  btc_key: ## Bitcoin key, e.g. 1ManMjCe5R4rSJ25by4rew2cGS8yz4874V
+  btc_key: ## Bitcoin key, e.g. 1KuK5eK2BLsqpsFVXXSBG5wbSAwZVadt6L
   paypal_url: ## Paypal URL, e.g. https://paypal.me/tufu9441
 show_ad_toc: false  ##在文章目录下方添加个广告位,设置为 true，否则为false
 show_ad_comment: false  ##在评论框上方添加个广告位,设置为 true，否则为false
@@ -44,19 +55,22 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
+  # - page: history
+  #   directory: history/
+  #   icon: fa-history
   - page: about
     directory: about/
     icon: fa-user
-  - page: rss
-    directory: atom.xml
-    icon: fa-rss
+  # - page: rss
+  #   directory: atom.xml
+  #   icon: fa-rss
 
 widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.
   - search
+  - category
   - tag
   - recent_posts
   - recent_comments
-  - category
   - links
 
 links:
@@ -80,7 +94,7 @@ timeline:
 # Static files
 js: js
 css: css
+images: images
 
 # Theme version
-# optimized by http://sobaigu.com
-version: 1.0.0
+version: 0.0.0
