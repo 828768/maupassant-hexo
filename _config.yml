@@ -1,3 +1,4 @@
+domain: ##百度搜索功能不能带协议，不知道怎么减掉协议，单独开个配置使用
 fancybox: true ## If you want to use fancybox please set the value to true.
 disqus: ## Your disqus_shortname, e.g. username
 gitment:
@@ -8,7 +9,7 @@ gitment:
   client_secret: ## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50
 uyan: ## Your uyan_id. e.g. 1234567
 livere: ## Your livere data-uid, e.g. MTAyMC8zMDAxOC78NTgz
-changyan: ## Your changyan appid, e.g. cyrALsXc8
+changyan_app: ## Your changyan appid, e.g. cyrALsXc8
 changyan_conf: ## Your changyan conf, e.g. prod_d8a508c2825ab57eeb43e7c69bba0e8b
 valine: ## https://valine.js.org
   enable: false ## If you want to use Valine comment system, please set the value to true.
