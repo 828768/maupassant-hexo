@@ -16,7 +16,7 @@ block content
       .post-meta= post.date.format(config.date_format)
       if theme.disqus
         a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
-      if theme.changyan_app
+      if theme.changyan.app_id
         a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
           span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
           span= ' ' + __('Comment')
@@ -47,8 +47,8 @@ block content
   include _partial/paginator.pug
   if theme.disqus
     script(id='dsq-count-scr', src='//'+ theme.disqus + '.disqus.com/count.js', async)
-  if theme.changyan_app
-    script#cy_cmt_num(src='//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan_app, async)
+  if theme.changyan.app_id
+    script#cy_cmt_num(src='//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan.app_id, async)
   if config.mathjax
     include _partial/mathjax.pug
   if config.mathjax2

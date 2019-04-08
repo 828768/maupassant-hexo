@@ -14,17 +14,19 @@ block content
             a(href=url_for(category.path))= category.name
 
       if page.keywords
-        span= ' | '
+        span= '：'
         span= page.keywords
 
       if theme.busuanzi == true
-        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
         span#busuanzi_container_page_pv= ' | '
           span#busuanzi_value_page_pv
           span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
     if theme.disqus
       a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan_app
+    if theme.changyan.app_id
       a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
         span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
         span= ' ' + __('Comment')
@@ -39,17 +41,40 @@ block content
           div(class='toc-title')= __('contents')
           != toc(page.content, {list_number: theme.toc_number})
 
-          if theme.show_ad_toc == true
-            include _ads/adsense_toc
-
     .post-content
       != page.content
 
-    if theme.show_ad_comment == true
-      include _ads/adsense_comment
+    if theme.changyan.donate == true
+      <div id='cyReward' role='cylabs' data-use='reward' style='text-align: center'></div>
+      <script type='text/javascript' charset='utf-8' src='https://changyan.itc.cn/js/lib/jquery.js'></script>
+      <script type='text/javascript' charset='utf-8' src='https://changyan.sohu.com/js/changyan.labs.https.js?appid=' + '#{theme.changyan.app_id}'></script>
 
     if theme.donate.enable == true
       iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
+
+    if theme.post_copyright.enable == true && page.copyright != false
+      div
+        ul.post-copyright
+          li.post-copyright-author
+            strong= __('copyright_author_prefix')
+            = theme.post_copyright.author
+          li.post-copyright-link
+            strong= __('copyright_link_prefix')
+            a(href='/' + page.path)= page.permalink
+          li.post-copyright-license
+            strong= __('copyright_declare_prefix')
+            if theme.post_copyright.copyright_text
+              != theme.post_copyright.copyright_text
+            else
+              != __('copyright_default_text')
+      br
+    //- google AdSense
+    if theme.adsense.google_ad_bottom == true
+      script(async='' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+      ins.adsbygoogle(style='display:block' data-ad-client='ca-pub-7390437336363898' data-ad-slot='9075736497' data-ad-format='auto')
+      script.
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
     if theme.shareto == true
       script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
       a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
